@@ -1,6 +1,6 @@
 {
   "name": "chrSafe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Safe mode library for ESP to detect bootloop under Arduino framework",
   "keywords": "esp32, arduino",
   "repository": {

@@ -74,4 +74,11 @@ namespace chrSafe {
         return _stableMs;
     }
 
+    void rebootToSafeMode() {
+        // Make the next setup() see the crash limit as reached.
+        _rtcMagicMarker = _magicNumber;
+        _crashCounter = _maxCrashes;
+        esp_restart();
+    }
+
 }

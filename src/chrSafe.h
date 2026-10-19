@@ -14,4 +14,6 @@ namespace chrSafe {
     // Returns true if the system is in safe mode.
     bool loop();
     uint16_t getStableTimeMs();
+    // Reboots the device; after the reboot setup() returns true (safe mode). Call setup() first.
+    void rebootToSafeMode();
 }

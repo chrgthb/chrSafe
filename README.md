@@ -9,6 +9,7 @@
 - Calls an optional callback when safe mode is entered.
 - Clears the crash counter after a configured period of stable operation.
 - Clears the crash counter on a cold boot or deep-sleep wake.
+- Can manually reboot into safe mode with `rebootToSafeMode()`.
 
 ## Requirements
 
@@ -94,6 +95,18 @@ Checks safe-mode state and updates the crash counter once `stableMs` has elapsed
 ### `getStableTimeMs()`
 
 Returns the configured stable-operation interval in milliseconds.
+
+### `rebootToSafeMode()`
+
+Manually enables safe mode: sets the crash counter to the `maxCrashes` limit and reboots the device. After the reboot `setup()` returns `true` (and the callback, if registered, is called). Call `setup()` before this function so that the configured `maxCrashes` and `magicNumber` are known. This function does not return.
+
+```cpp
+if (userRequestedRecovery) {
+    chrSafe::rebootToSafeMode();
+}
+```
+
+Safe mode stays active across software and watchdog resets; a cold boot (power-on) or a deep-sleep wake clears it.
 
 ## License
 
